@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import { Merriweather_Sans } from 'next/font/google'
-import './globals.css'
 
 const merriweatherSans = Merriweather_Sans({ subsets: ['latin'], weight: ['300'] })
 
 export const metadata: Metadata = {
-  title: 'Carlos Gutierrez',
-  description: "Carlos' personal page",
-}
+    title: "Carlos Gutierrez's Blog",
+    description: "Carlos' personal blog",
+}  
 
 export default function RootLayout({
   children,
