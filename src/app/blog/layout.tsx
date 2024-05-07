@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" >
-      <body className={merriweatherSans.className}>{children}</body>
+      <body className={`${merriweatherSans.className} bg-main-dark`}>{children}</body>
     </html>
   )
 }
