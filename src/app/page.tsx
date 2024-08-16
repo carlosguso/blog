@@ -10,7 +10,7 @@ export default function Landing() {
             href="/"
             className="transition-colors duration-300 ease-in-out hover:text-main-accent rounded-md text-sx"
           >
-            <h1 className="text-lg font-semibold">Carlos Gutierrez</h1>
+            <h1 className="text-2xl font-semibold">Carlos Gutierrez</h1>
           </Link>
           <div>
             <Link
@@ -37,6 +37,65 @@ export default function Landing() {
           <About />
         </section>
         {/* Think about putting the image here */}
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold mb-6">Thoughts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                <h3 className="text-xl font-semibold mb-2">
+                  Thought Title {i}
+                </h3>
+                <p className="text-gray-300">
+                  A brief description of the thought or blog post. This is a
+                  placeholder text.
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold mb-6">Articles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                <h3 className="text-xl font-semibold mb-2">
+                  Article Title {i}
+                </h3>
+                <p className="text-gray-300">
+                  A short description of the article. This is placeholder text
+                  for demonstration.
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold mb-6">Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                <h3 className="text-xl font-semibold mb-2">
+                  Project Title {i}
+                </h3>
+                <p className="text-gray-300">
+                  A brief description of the project. This is placeholder text
+                  to showcase the layout.
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
         <footer className="mt-8 pt-8 border-t border-gray-200">
           <div className="flex justify-center space-x-6">
             <Link
