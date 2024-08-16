@@ -10,7 +10,9 @@ export default function Landing() {
             href="/"
             className="transition-colors duration-300 ease-in-out hover:text-main-accent rounded-md text-sx"
           >
-            <h1 className="text-2xl font-semibold">Carlos Gutierrez</h1>
+            <h1 className="text-2xl font-semibold text-main-accent">
+              Carlos Gutierrez
+            </h1>
           </Link>
           <div>
             <Link
@@ -38,12 +40,14 @@ export default function Landing() {
         </section>
         {/* Think about putting the image here */}
         <section className="mt-12">
-          <h2 className="text-2xl font-semibold mb-6">Thoughts</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-main-accent">
+            Thoughts
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <h3 className="text-xl font-semibold mb-2">
                   Thought Title {i}
@@ -58,12 +62,14 @@ export default function Landing() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-2xl font-semibold mb-6">Articles</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-main-accent">
+            Articles
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <h3 className="text-xl font-semibold mb-2">
                   Article Title {i}
@@ -78,12 +84,14 @@ export default function Landing() {
         </section>
 
         <section className="mt-12">
-          <h2 className="text-2xl font-semibold mb-6">Projects</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-main-accent">
+            Projects
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <h3 className="text-xl font-semibold mb-2">
                   Project Title {i}

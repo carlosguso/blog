@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         "main-dark": "#12001f",
-        "main-accent": "#a7dcfc",
+        "main-accent": "#c99dfa",
       },
     },
   },
