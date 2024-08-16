@@ -4,7 +4,7 @@ import About from "./about.mdx";
 export default function Landing() {
   return (
     <div className="w-full flex justify-center align-center">
-      <div className="lg:w-6/12 md:w-9/12 w-full p-2 mx-auto sm:px-4">
+      <div className="lg:w-8/12 md:w-9/12 w-full p-2 mx-auto sm:px-4">
         <header className="flex flex-row justify-between pt-12 pb-3">
           <Link
             href="/"
