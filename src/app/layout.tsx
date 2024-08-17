@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Merriweather_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 const merriweatherSans = Merriweather_Sans({
   subsets: ["latin"],
@@ -18,9 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${merriweatherSans.className} bg-main-dark`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${merriweatherSans.className}`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

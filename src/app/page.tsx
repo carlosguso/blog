@@ -1,6 +1,7 @@
 import Link from "next/link";
 import About from "./about.mdx";
 import highlights from "./highlights.json";
+import ThemeToggle from "../components/ThemeToggle";
 
 type Highlights = {
   thoughts: Highlight[];
@@ -19,34 +20,35 @@ export default function Landing() {
   return (
     <div className="w-full flex justify-center align-center">
       <div className="lg:w-8/12 md:w-9/12 w-full p-2 mx-auto sm:px-4">
-        <header className="flex flex-row justify-between pt-12 pb-3">
+        <header className="flex flex-row justify-between items-center pt-12 pb-3">
           <Link
             href="/"
-            className="transition-colors duration-300 ease-in-out hover:text-main-accent rounded-md text-sx"
+            className="transition-colors duration-300 ease-in-out hover:text-main-accent-light dark:hover:text-main-accent rounded-md text-sx"
           >
-            <h1 className="text-2xl font-semibold text-main-accent">
+            <h1 className="text-2xl font-semibold text-main-accent-light dark:text-main-accent">
               Carlos Gutierrez
             </h1>
           </Link>
-          <div>
+          <div className="flex items-center space-x-4">
             <Link
               href="/blog"
-              className="transition-colors duration-300 ease-in-out hover:text-main-accent rounded-md text-sx"
+              className="transition-colors duration-300 ease-in-out hover:text-main-accent-light dark:hover:text-main-accent rounded-md text-sx"
             >
               Thoughts
             </Link>
             <Link
               href="/projects"
-              className="transition-colors duration-300 ease-in-out hover:text-main-accent ml-4 rounded-md text-sx"
+              className="transition-colors duration-300 ease-in-out hover:text-main-accent-light dark:hover:text-main-accent rounded-md text-sx"
             >
               Projects
             </Link>
             <Link
               href="/articles"
-              className="transition-colors duration-300 ease-in-out hover:text-main-accent ml-4 rounded-md text-sx"
+              className="transition-colors duration-300 ease-in-out hover:text-main-accent-light dark:hover:text-main-accent rounded-md text-sx"
             >
               Articles
             </Link>
+            <ThemeToggle />
           </div>
         </header>
         <section>
@@ -115,13 +117,13 @@ export default function Landing() {
             </div>
           </section>
         )}
-        <footer className="mt-8 pt-8 border-t border-gray-200">
+        <footer className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
           <div className="flex justify-center space-x-6">
             <Link
               href="https://www.linkedin.com/in/carlosguso"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-main-accent transition-colors duration-300"
+              className="text-gray-400 hover:text-main-accent-light dark:hover:text-main-accent transition-colors duration-300"
             >
               <span className="sr-only">LinkedIn</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -132,7 +134,7 @@ export default function Landing() {
               href="https://x.com/carlosgusol"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-main-accent transition-colors duration-300"
+              className="text-gray-400 hover:text-main-accent-light dark:hover:text-main-accent transition-colors duration-300"
             >
               <span className="sr-only">X</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -143,7 +145,7 @@ export default function Landing() {
               href="https://github.com/carlosguso"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-main-accent transition-colors duration-300"
+              className="text-gray-400 hover:text-main-accent-light dark:hover:text-main-accent transition-colors duration-300"
             >
               <span className="sr-only">GitHub</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -152,7 +154,7 @@ export default function Landing() {
             </Link>
             <Link
               href="mailto:carlosguso@protonmail.com"
-              className="text-gray-400 hover:text-main-accent transition-colors duration-300"
+              className="text-gray-400 hover:text-main-accent-light dark:hover:text-main-accent transition-colors duration-300"
             >
               <span className="sr-only">Email</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
