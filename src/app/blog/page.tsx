@@ -1,7 +1,8 @@
 import Link from "next/link";
-import blogPosts from "../blogPosts.json";
+//import blogPosts from "../blogPosts.json";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import blogPosts from "./posts";
 
 export default function BlogMainPage() {
   return (
@@ -12,9 +13,9 @@ export default function BlogMainPage() {
           <h2 className="text-2xl font-semibold mb-6 text-main-accent-light dark:text-main-accent">
             Thoughts
           </h2>
-          {blogPosts.posts.length > 0 ? (
+          {blogPosts.length > 0 ? (
             <div className="flex flex-col space-y-6">
-              {blogPosts.posts.map((post, index) => (
+              {blogPosts.map((post, index) => (
                 <Link href={post.url} key={index} className="block">
                   <div className="bg-white dark:bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                     <h3 className="text-xl font-semibold mb-2">{post.title}</h3>

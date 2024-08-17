@@ -1,21 +1,8 @@
 import Link from "next/link";
 import About from "./about.mdx";
-import highlights from "./highlights.json";
+import highlights from "./highlights";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
-type Highlights = {
-  thoughts: Highlight[];
-  articles: Highlight[];
-  projects: Highlight[];
-};
-
-const typedHighlights = highlights as Highlights;
-
-type Highlight = {
-  title: string;
-  description: string;
-};
 
 export default function Landing() {
   return (
@@ -26,13 +13,13 @@ export default function Landing() {
           <About />
         </section>
         {/* Think about putting the image here */}
-        {typedHighlights.thoughts.length > 0 && (
+        {highlights.thoughts.length > 0 && (
           <section className="mt-12">
             <h2 className="text-2xl font-semibold mb-6 text-main-accent">
               Thoughts
             </h2>
             <div className="flex flex-col space-y-6">
-              {typedHighlights.thoughts.map((thought, index) => (
+              {highlights.thoughts.map((thought, index) => (
                 <div
                   key={index}
                   className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
@@ -47,13 +34,13 @@ export default function Landing() {
           </section>
         )}
 
-        {typedHighlights.articles.length > 0 && (
+        {highlights.articles.length > 0 && (
           <section className="mt-12">
             <h2 className="text-2xl font-semibold mb-6 text-main-accent">
               Articles
             </h2>
             <div className="flex flex-col space-y-6">
-              {typedHighlights.articles.map((article, index) => (
+              {highlights.articles.map((article, index) => (
                 <div
                   key={index}
                   className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
@@ -68,13 +55,13 @@ export default function Landing() {
           </section>
         )}
 
-        {typedHighlights.projects.length > 0 && (
+        {highlights.projects.length > 0 && (
           <section className="mt-12">
             <h2 className="text-2xl font-semibold mb-6 text-main-accent">
               Projects
             </h2>
             <div className="flex flex-col space-y-6">
-              {typedHighlights.projects.map((project, index) => (
+              {highlights.projects.map((project, index) => (
                 <div
                   key={index}
                   className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"

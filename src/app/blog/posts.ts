@@ -1,9 +1,10 @@
-export const posts = {
-    "2023": [
-        {
-            title: "My First Post",
-            url: "2023/my_first_post",
-            creationDate: "2023-12-19",
-        },
-    ],
-};
+const posts = [
+    {
+        title: "My First Post",
+        description: "This is my first blog post.",
+        url: "/blog/2023/my-first-post",
+        date: "2023-12-19",
+    },
+];
+
+export default posts;
