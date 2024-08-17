@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import blogPosts from "./posts";
+import ItemCard from "../../components/ItemCard";
 
 export default function BlogMainPage() {
   return (
@@ -15,17 +16,13 @@ export default function BlogMainPage() {
           {blogPosts.length > 0 ? (
             <div className="flex flex-col space-y-6">
               {blogPosts.map((post, index) => (
-                <Link href={post.url} key={index} className="block">
-                  <div className="bg-white dark:bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {post.description}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                      {post.date}
-                    </p>
-                  </div>
-                </Link>
+                <ItemCard
+                  key={index}
+                  title={post.title}
+                  description={post.description}
+                  url={post.url}
+                  date={post.date}
+                />
               ))}
             </div>
           ) : (

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import projects from "./projects";
+import ItemCard from "../../components/ItemCard";
 
 export default function ProjectsMainPage() {
   return (
@@ -15,16 +16,13 @@ export default function ProjectsMainPage() {
           {projects.length > 0 ? (
             <div className="flex flex-col space-y-6">
               {projects.map((project, index) => (
-                <Link href={project.url} key={index} className="block">
-                  <div className="bg-white dark:bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h3 className="text-xl font-semibold mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {project.description}
-                    </p>
-                  </div>
-                </Link>
+                <ItemCard
+                  key={index}
+                  title={project.title}
+                  description={project.description}
+                  url={project.url}
+                  date={project.date}
+                />
               ))}
             </div>
           ) : (

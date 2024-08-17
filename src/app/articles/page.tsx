@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import articles from "./articles";
+import ItemCard from "../../components/ItemCard";
 
 export default function ArticlesMainPage() {
   return (
@@ -15,19 +16,13 @@ export default function ArticlesMainPage() {
           {articles.length > 0 ? (
             <div className="flex flex-col space-y-6">
               {articles.map((article, index) => (
-                <Link href={article.url} key={index} className="block">
-                  <div className="bg-white dark:bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h3 className="text-xl font-semibold mb-2">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {article.description}
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-                      {article.date}
-                    </p>
-                  </div>
-                </Link>
+                <ItemCard
+                  key={index}
+                  title={article.title}
+                  description={article.description}
+                  url={article.url}
+                  date={article.date}
+                />
               ))}
             </div>
           ) : (
