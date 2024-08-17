@@ -8,7 +8,7 @@ const CustomParagraph: React.FC<CustomParagraphProps> = ({
   children,
   ...props
 }) => (
-  <p className="my-3" {...props}>
+  <p className="my-6" {...props}>
     {children}
   </p>
 );
