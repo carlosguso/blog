@@ -1,5 +1,4 @@
 import Link from "next/link";
-//import blogPosts from "../blogPosts.json";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import blogPosts from "./posts";
