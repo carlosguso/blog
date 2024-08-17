@@ -1,5 +1,6 @@
 import Link from "next/link";
 import About from "./about.mdx";
+import highlights from "./highlights.json";
 
 export default function Landing() {
   return (
@@ -44,18 +45,13 @@ export default function Landing() {
             Thoughts
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
+            {highlights.thoughts.map((thought, index) => (
               <div
-                key={i}
+                key={index}
                 className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               >
-                <h3 className="text-xl font-semibold mb-2">
-                  Thought Title {i}
-                </h3>
-                <p className="text-gray-300">
-                  A brief description of the thought or blog post. This is a
-                  placeholder text.
-                </p>
+                <h3 className="text-xl font-semibold mb-2">{thought.title}</h3>
+                <p className="text-gray-300">{thought.description}</p>
               </div>
             ))}
           </div>
@@ -66,18 +62,13 @@ export default function Landing() {
             Articles
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
+            {highlights.articles.map((article, index) => (
               <div
-                key={i}
+                key={index}
                 className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               >
-                <h3 className="text-xl font-semibold mb-2">
-                  Article Title {i}
-                </h3>
-                <p className="text-gray-300">
-                  A short description of the article. This is placeholder text
-                  for demonstration.
-                </p>
+                <h3 className="text-xl font-semibold mb-2">{article.title}</h3>
+                <p className="text-gray-300">{article.description}</p>
               </div>
             ))}
           </div>
@@ -88,18 +79,13 @@ export default function Landing() {
             Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
+            {highlights.projects.map((project, index) => (
               <div
-                key={i}
+                key={index}
                 className="bg-[#1e0a30] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               >
-                <h3 className="text-xl font-semibold mb-2">
-                  Project Title {i}
-                </h3>
-                <p className="text-gray-300">
-                  A brief description of the project. This is placeholder text
-                  to showcase the layout.
-                </p>
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-gray-300">{project.description}</p>
               </div>
             ))}
           </div>

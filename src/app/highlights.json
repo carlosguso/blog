@@ -1,0 +1,17 @@
+{
+  "thoughts": [
+    { "title": "Thought Title 1", "description": "Description of thought 1" },
+    { "title": "Thought Title 2", "description": "Description of thought 2" },
+    { "title": "Thought Title 3", "description": "Description of thought 3" }
+  ],
+  "articles": [
+    { "title": "Article Title 1", "description": "Description of article 1" },
+    { "title": "Article Title 2", "description": "Description of article 2" },
+    { "title": "Article Title 3", "description": "Description of article 3" }
+  ],
+  "projects": [
+    { "title": "Project Title 1", "description": "Description of project 1" },
+    { "title": "Project Title 2", "description": "Description of project 2" },
+    { "title": "Project Title 3", "description": "Description of project 3" }
+  ]
+}
