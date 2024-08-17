@@ -1,4 +1,11 @@
-const posts = [
+type Post = {
+    title: string;
+    description: string;
+    url: string;
+    date: string;
+};
+
+const posts: Post[] = [
     {
         title: "My First Post",
         description: "This is my first blog post.",
