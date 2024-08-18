@@ -1,33 +1,33 @@
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import blogPosts from "./posts";
+import articles from "./articles";
 import ItemCard from "../../components/ItemCard";
 
-export default function BlogMainPage() {
+export default function ArticlesMainPage() {
   return (
     <div className="w-full flex justify-center align-center">
       <div className="lg:w-8/12 md:w-9/12 w-full p-2 mx-auto sm:px-4">
         <Header />
         <section className="mt-12">
           <h2 className="text-2xl font-semibold mb-6 text-main-accent-light dark:text-main-accent">
-            Thoughts
+            Articles
           </h2>
-          {blogPosts.length > 0 ? (
+          {articles.length > 0 ? (
             <div className="flex flex-col space-y-6">
-              {blogPosts.map((post, index) => (
+              {articles.map((article, index) => (
                 <ItemCard
                   key={index}
-                  title={post.title}
-                  description={post.description}
-                  url={post.url}
-                  date={post.date}
+                  title={article.title}
+                  description={article.description}
+                  url={article.url}
+                  date={article.date}
                 />
               ))}
             </div>
           ) : (
             <p className="text-gray-700 dark:text-gray-300">
-              No blog posts available at the moment. Check back later!
+              No articles available at the moment. Check back later!
             </p>
           )}
         </section>
