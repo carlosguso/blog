@@ -1,12 +1,10 @@
-import Link from "next/link";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import MainLayout from "@/components/MainLayout";
 import projects from "./projects";
 import ItemCard from "../../components/ItemCard";
 
 export default function ProjectsMainPage() {
   return (
-    <>
+    <MainLayout>
       <h2 className="text-2xl font-semibold mb-6 text-main-accent-light dark:text-main-accent">
         Projects
       </h2>
@@ -27,6 +25,6 @@ export default function ProjectsMainPage() {
           No projects available at the moment. Check back later!
         </p>
       )}
-    </>
+    </MainLayout>
   );
 }

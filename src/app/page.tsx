@@ -1,9 +1,10 @@
 import About from "./about.mdx";
 import highlights from "./highlights";
+import MainLayout from "@/components/MainLayout";
 
 export default function Landing() {
   return (
-    <>
+    <MainLayout>
       <section>
         <About />
       </section>
@@ -64,6 +65,6 @@ export default function Landing() {
           </div>
         </section>
       )}
-    </>
+    </MainLayout>
   );
 }

@@ -1,9 +1,10 @@
+import MainLayout from "@/components/MainLayout";
 import articles from "./articles";
 import ItemCard from "../../components/ItemCard";
 
 export default function ArticlesMainPage() {
   return (
-    <>
+    <MainLayout>
       <h2 className="text-2xl font-semibold mb-6 text-main-accent-light dark:text-main-accent">
         Articles
       </h2>
@@ -24,6 +25,6 @@ export default function ArticlesMainPage() {
           No articles available at the moment. Check back later!
         </p>
       )}
-    </>
+    </MainLayout>
   );
 }
