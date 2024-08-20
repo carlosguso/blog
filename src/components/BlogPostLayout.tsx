@@ -11,7 +11,10 @@ export default function BlogPostLayout({
     <div className="w-full flex justify-center align-center">
       <div className="lg:w-8/12 md:w-9/12 w-full p-2 mx-auto sm:px-4">
         <header className="flex justify-between items-center pt-12 mb-8">
-          <Link href="/blog" className="text-main-accent hover:underline">
+          <Link
+            href="/blog"
+            className="transition-colors duration-300 ease-in-out hover:text-main-accent-light dark:hover:text-main-accent rounded-md text-sx"
+          >
             ← Back to Blog
           </Link>
           <ThemeToggle />
