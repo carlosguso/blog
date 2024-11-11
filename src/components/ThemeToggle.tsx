@@ -1,33 +1,32 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, systemTheme } = useTheme();
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { theme, setTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
   useEffect(() => {
-    systemTheme && setTheme(systemTheme);
-  }, [systemTheme, setTheme]);
+    setMounted(true);
+  }, []);
 
-  if (!mounted) return null;
-
-  const handleClick = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-    // Remove focus after click
-    if (buttonRef.current) {
-      buttonRef.current.blur();
-    }
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    // Manually update the class on the html element
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(newTheme);
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <button
-      ref={buttonRef}
-      className="p-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-main-accent-light dark:hover:text-main-accent focus:outline-none focus:ring-2 focus:ring-main-accent-light dark:focus:ring-main-accent"
-      onClick={handleClick}
+      onClick={toggleTheme}
+      className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (
