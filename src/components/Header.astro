@@ -1,0 +1,104 @@
+---
+const currentPath = Astro.url.pathname;
+const navLinks = [
+  { name: "Projects", path: "/projects" },
+  { name: "Blog", path: "/blog" },
+];
+
+const isActive = (path: string) => {
+  if (path === '/') return currentPath === '/';
+  return currentPath.startsWith(path);
+};
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+  <div class="max-w-3xl mx-auto px-6 py-4">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <a href="/" class="text-2xl font-bold hover:opacity-80 transition-opacity text-center md:text-left text-primary">
+        Carlos Gutierrez
+      </a>
+      
+      <nav class="flex items-center justify-center gap-6">
+        {navLinks.map((link) => (
+          <a
+            href={link.path}
+            class={`text-sm font-medium transition-colors hover:text-primary ${
+              isActive(link.path) ? "text-primary" : "text-foreground"
+            }`}
+          >
+            {link.name}
+          </a>
+        ))}
+        
+        <button
+          id="theme-toggle"
+          class="ml-2 p-2 transition-colors hover:text-primary text-foreground"
+          aria-label="Toggle theme"
+        >
+          <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  function initThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    function getTheme() {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    }
+
+    function updateThemeIcons(theme: string) {
+      if (theme === 'light') {
+        themeToggleDarkIcon?.classList.remove('hidden');
+        themeToggleLightIcon?.classList.add('hidden');
+      } else {
+        themeToggleDarkIcon?.classList.add('hidden');
+        themeToggleLightIcon?.classList.remove('hidden');
+      }
+    }
+
+    function setTheme(theme: string) {
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+      localStorage.setItem('theme', theme);
+      updateThemeIcons(theme);
+    }
+
+    // Initialize icons based on current theme
+    const currentTheme = getTheme();
+    updateThemeIcons(currentTheme);
+
+    // Toggle theme on click
+    themeToggleBtn?.addEventListener('click', () => {
+      const newTheme = getTheme() === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    });
+  }
+
+  // Run on page load
+  initThemeToggle();
+  
+  // Re-run after navigation (for Astro view transitions if added later)
+  document.addEventListener('astro:page-load', initThemeToggle);
+</script>
+

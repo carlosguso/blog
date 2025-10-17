@@ -1,0 +1,57 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import SocialLinks from '@/components/SocialLinks';
+import profileImage from '@/assets/profile.webp';
+---
+
+<BaseLayout title="Carlos Gutierrez - Software Engineer">
+  <div class="min-h-screen bg-background">
+    <Header />
+    
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-16">
+      <div class="space-y-6 text-foreground">
+        <p class="text-lg leading-relaxed">
+          Hi, I'm <span class="font-semibold">Your Name</span>, a Software Engineer passionate about building products from the ground up.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          Currently building innovative solutions at{" "}
+          <a 
+            href="https://example.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="text-primary hover:underline font-medium"
+          >
+            Your Company
+          </a>.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          Throughout my career, I've worked on small, high-impact teams where I've contributed to projects ranging from innovative web applications to scalable APIs that serve thousands of users worldwide.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          I thrive on tackling challenging problems and am always eager to learn more about the technologies that fascinate me.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          Outside of tech, my hobbies include reading, photography, and exploring new cities.
+        </p>
+      </div>
+      
+      <div class="mt-12 flex justify-center">
+        <img 
+          src={profileImage.src} 
+          alt="Profile" 
+          class="w-64 h-64 rounded-lg object-cover shadow-lg"
+        />
+      </div>
+      
+      <div class="mt-12">
+        <SocialLinks client:load />
+      </div>
+    </main>
+  </div>
+</BaseLayout>
+
