@@ -12,7 +12,6 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 
-
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
@@ -27,20 +26,20 @@ RUN bun install
 # Copy application code
 COPY . .
 
-# Build application
+# Build application for static output
 RUN bun --bun run build
 
-# Remove development dependencies
-RUN rm -rf node_modules && \
-    bun install --ci
+# Final stage for serving static files with nginx
+FROM nginx:alpine AS runtime
 
+# Copy built static files to nginx html directory
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Final stage for app image
-FROM base
+# Copy custom nginx configuration if needed
+# COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy built application
-COPY --from=build /app /app
+# Expose port 80
+EXPOSE 80
 
-# Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
-CMD [ "bun", "run", "start" ]
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]

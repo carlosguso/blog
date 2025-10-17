@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for blog-crimson-wildflower-9032 on 2025-10-16T22:46:54-06:00
+# fly.toml app configuration file generated for blog-withered-glitter-7899 on 2024-08-17T20:55:59-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'blog-crimson-wildflower-9032'
+app = 'blog-withered-glitter-7899'
 primary_region = 'phx'
 
 [build]
