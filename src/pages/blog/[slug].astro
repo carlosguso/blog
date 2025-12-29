@@ -1,0 +1,96 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "getting-started-with-react" } },
+    { params: { slug: "understanding-typescript" } },
+    { params: { slug: "building-modern-web-apps" } },
+  ];
+}
+
+// Mock data - will be replaced with Strapi API call
+const getBlogPost = (slug: string) => {
+  const posts: Record<string, any> = {
+    "getting-started-with-react": {
+      title: "Getting Started with React",
+      date: "2024-03-15",
+      content: `
+        <p>React is a powerful JavaScript library for building user interfaces. In this post, we'll explore the fundamentals of React and how to get started with your first project.</p>
+        
+        <h2>What is React?</h2>
+        <p>React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called "components".</p>
+        
+        <h2>Getting Started</h2>
+        <p>To start with React, you'll need Node.js installed on your machine. Then you can create a new React app using Create React App or Vite.</p>
+      `
+    },
+    "understanding-typescript": {
+      title: "Understanding TypeScript",
+      date: "2024-02-28",
+      content: `
+        <p>TypeScript is a strongly typed programming language that builds on JavaScript. Learn the basics in this comprehensive guide.</p>
+        
+        <h2>What is TypeScript?</h2>
+        <p>TypeScript adds optional types to JavaScript, enabling better tooling, error checking, and code documentation.</p>
+        
+        <h2>Key Features</h2>
+        <p>Static typing, interfaces, classes, and excellent IDE support make TypeScript a great choice for large applications.</p>
+      `
+    },
+    "building-modern-web-apps": {
+      title: "Building Modern Web Apps",
+      date: "2024-01-20",
+      content: `
+        <p>Learn how to build modern web applications with the latest tools and frameworks.</p>
+        
+        <h2>Modern Web Development</h2>
+        <p>Today's web development involves component-based frameworks, build tools, and best practices for performance and accessibility.</p>
+        
+        <h2>Tools and Frameworks</h2>
+        <p>React, Vue, Svelte, Astro, and many other frameworks provide excellent developer experience and performance.</p>
+      `
+    }
+  };
+  return posts[slug] || null;
+};
+
+const { slug } = Astro.params;
+const post = getBlogPost(slug || "");
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<BaseLayout title={`${post.title} - Carlos Gutierrez`}>
+  <div class="min-h-screen bg-background">
+    <Header />
+    
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-16">
+      <a 
+        href="/blog"
+        class="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors mb-8"
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Back to Blog
+      </a>
+
+      <article>
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold text-primary mb-4">{post.title}</h1>
+          <time class="text-sm text-muted-foreground">{post.date}</time>
+        </header>
+
+        <div 
+          class="prose prose-invert max-w-none"
+          set:html={post.content}
+        />
+      </article>
+    </main>
+  </div>
+</BaseLayout>
+
