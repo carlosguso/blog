@@ -3,12 +3,17 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 
 interface Props {
-  title?: string;
-  date?: string;
-  description?: string;
+  frontmatter?: {
+    title?: string;
+    date?: string;
+    description?: string;
+  };
 }
 
-const { title = 'Untitled', date = '', description } = Astro.props;
+const { frontmatter = {} } = Astro.props;
+const title = frontmatter.title || 'Untitled';
+const date = frontmatter.date || '';
+const description = frontmatter.description;
 ---
 
 <BaseLayout title={`${title} - Carlos Gutierrez`}>
