@@ -4,7 +4,13 @@ import Header from '@/components/Header.astro';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { processMDXFiles } from '@/lib/utils';
 
-const allProjects = await Astro.glob('./*.mdx');
+let allProjects = [];
+try {
+  allProjects = await Astro.glob('./*.mdx');
+} catch {
+  // No MDX files found, which is fine
+  allProjects = [];
+}
 const projects = processMDXFiles(allProjects);
 ---
 
