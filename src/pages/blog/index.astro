@@ -2,12 +2,16 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { processMDXFiles } from '@/lib/utils';
 
-const blogPosts = [
-  { title: "Getting Started with React", date: "2024-03-15", slug: "getting-started-with-react" },
-  { title: "Understanding TypeScript", date: "2024-02-28", slug: "understanding-typescript" },
-  { title: "Building Modern Web Apps", date: "2024-01-20", slug: "building-modern-web-apps" },
-];
+let allPosts = [];
+try {
+  allPosts = await Astro.glob('./*.mdx');
+} catch {
+  // No MDX files found, which is fine
+  allPosts = [];
+}
+const blogPosts = processMDXFiles(allPosts);
 ---
 
 <BaseLayout title="Blog - Carlos Gutierrez">
@@ -17,20 +21,26 @@ const blogPosts = [
     <main class="max-w-3xl mx-auto px-6 pt-32 pb-16">
       <h1 class="text-4xl font-bold text-primary mb-8">Blog</h1>
       
-      <div class="space-y-4">
-        {blogPosts.map((post) => (
-          <a href={`/blog/${post.slug}`} class="block">
-            <Card className="cursor-pointer transition-all duration-200 hover:bg-card/80 hover:scale-[1.02]">
-              <CardHeader>
-                <div class="flex justify-between items-start">
-                  <CardTitle className="text-xl">{post.title}</CardTitle>
-                  <span class="text-sm text-muted-foreground">{post.date}</span>
-                </div>
-              </CardHeader>
-            </Card>
-          </a>
-        ))}
-      </div>
+      {blogPosts.length > 0 ? (
+        <div class="space-y-4">
+          {blogPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="block">
+              <Card className="cursor-pointer transition-all duration-200 hover:bg-card/80 hover:scale-[1.02]">
+                <CardHeader>
+                  <div class="flex justify-between items-start">
+                    <CardTitle className="text-xl">{post.title}</CardTitle>
+                    <span class="text-sm text-muted-foreground">{post.date}</span>
+                  </div>
+                </CardHeader>
+              </Card>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-muted-foreground text-lg">No blog posts yet. Check back soon!</p>
+        </div>
+      )}
     </main>
   </div>
 </BaseLayout>
