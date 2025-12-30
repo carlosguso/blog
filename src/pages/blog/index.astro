@@ -2,19 +2,10 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { processMDXFiles } from '@/lib/utils';
 
 const allPosts = await Astro.glob('./*.mdx');
-const blogPosts = allPosts
-  .map((post) => {
-    const url = post.url;
-    const slug = url.split('/').pop()?.replace('.html', '').replace(/\/$/, '') || '';
-    return {
-      title: post.frontmatter.title,
-      date: post.frontmatter.date,
-      slug,
-    };
-  })
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const blogPosts = processMDXFiles(allPosts);
 ---
 
 <BaseLayout title="Blog - Carlos Gutierrez">
