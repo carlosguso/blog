@@ -3,11 +3,18 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 
-const projects = [
-  { title: "Portfolio Website", date: "2024-03-10", slug: "portfolio-website" },
-  { title: "E-commerce Platform", date: "2024-02-15", slug: "ecommerce-platform" },
-  { title: "Task Management App", date: "2024-01-05", slug: "task-management-app" },
-];
+const allProjects = await Astro.glob('./*.mdx');
+const projects = allProjects
+  .map((project) => {
+    const url = project.url;
+    const slug = url.split('/').pop()?.replace('.html', '').replace(/\/$/, '') || '';
+    return {
+      title: project.frontmatter.title,
+      date: project.frontmatter.date,
+      slug,
+    };
+  })
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
 <BaseLayout title="Projects - Carlos Gutierrez">
