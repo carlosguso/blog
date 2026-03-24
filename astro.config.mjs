@@ -3,9 +3,12 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+
   integrations: [
     react(),
     tailwind({
@@ -13,6 +16,7 @@ export default defineConfig({
     }),
     mdx(),
   ],
+
   vite: {
     resolve: {
       alias: {
@@ -20,5 +24,6 @@ export default defineConfig({
       },
     },
   },
-});
 
+  adapter: cloudflare()
+});
