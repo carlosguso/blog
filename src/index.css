@@ -32,8 +32,9 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    /* Darker than background (92% L) so 2px borders read in light mode */
+    --border: 270 22% 68%;
+    --input: 270 22% 68%;
     --ring: 262 83% 58%;
 
     --radius: 0.5rem;
