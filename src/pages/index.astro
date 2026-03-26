@@ -2,6 +2,9 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
 import profileImage from '@/assets/profile.webp';
+
+/** Hardcoded feature flag: two-column Current / Background block (layout kept; toggle when copy is ready). */
+const SHOW_HOME_CURRENT_BACKGROUND_BOXES = false;
 ---
 
 <BaseLayout title="Carlos Gutierrez - Software Engineer">
@@ -47,24 +50,25 @@ import profileImage from '@/assets/profile.webp';
         </div>
       </div>
 
-      <!-- Two-column section (Current / Previous) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-2 border-border">
-        <div class="p-6 border-b-2 md:border-b-0 md:border-r-2 border-border">
-          <p class="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">Current</p>
-          <h2 class="text-xl font-bold text-foreground mb-2">Tekmetric / Shopgenie</h2>
-          <p class="text-sm font-mono text-muted-foreground">
-            All-in-one software for auto repair shops
-          </p>
+      {SHOW_HOME_CURRENT_BACKGROUND_BOXES && (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-2 border-border">
+          <div class="p-6 border-b-2 md:border-b-0 md:border-r-2 border-border">
+            <p class="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">Current</p>
+            <h2 class="text-xl font-bold text-foreground mb-2">Tekmetric / Shopgenie</h2>
+            <p class="text-sm font-mono text-muted-foreground">
+              All-in-one software for auto repair shops
+            </p>
+          </div>
+          <div class="p-6">
+            <p class="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">Background</p>
+            <h2 class="text-xl font-bold text-foreground mb-2">Geolocation · Travel APIs</h2>
+            <p class="text-sm font-mono text-muted-foreground">
+              High-availability systems, hundreds of thousands of users
+            </p>
+          </div>
         </div>
-        <div class="p-6">
-          <p class="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">Background</p>
-          <h2 class="text-xl font-bold text-foreground mb-2">Geolocation · Travel APIs</h2>
-          <p class="text-sm font-mono text-muted-foreground">
-            High-availability systems, hundreds of thousands of users
-          </p>
-        </div>
-      </div>
-      
+      )}
+
       <!-- Profile image -->
       <div class="mt-12 flex justify-center">
         <img 
