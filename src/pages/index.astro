@@ -1,60 +1,82 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/Header.astro';
-import SocialLinks from '@/components/SocialLinks';
 import profileImage from '@/assets/profile.webp';
+
+/** Hardcoded feature flag: two-column Current / Background block (layout kept; toggle when copy is ready). */
+const SHOW_HOME_CURRENT_BACKGROUND_BOXES = false;
 ---
 
 <BaseLayout title="Carlos Gutierrez - Software Engineer">
-  <div class="min-h-screen bg-background">
+  <div class="min-h-screen bg-background flex flex-col">
     <Header />
     
-    <main class="max-w-3xl mx-auto px-6 pt-32 pb-16">
-      <div class="space-y-6 text-foreground">
-        <p class="text-lg leading-relaxed">
-          Hi, I'm <span class="font-semibold">Carlos</span>, a Software Engineer passionate about building products.
+    <main class="flex-1 max-w-4xl mx-auto w-full px-8 py-12">
+      <!-- Hero section -->
+      <div class="border-b-2 border-border pb-8 mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-2">
+          Carlos Gutierrez
+        </h1>
+        <p class="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-6">
+          Software Engineer / Product Builder
         </p>
-        
-        <p class="text-lg leading-relaxed">
-          Currently at
-          <a 
-            href="https://www.tekmetric.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="text-primary hover:underline font-medium transition-colors duration-300 ease-in-out hover:text-main-accent"
-          >
-            Tekmetric
-          </a>{" "}
-          on the <span class="font-semibold">Shopgenie</span> product, building the best all-in-one software for auto repair shops.
-        </p>
-        
-        <p class="text-lg leading-relaxed">
-          Throughout my career, I've worked on small, high-impact teams where
-          I've contributed to projects ranging from geolocation solutions in the security sector to high-availability APIs
-          that serve hundreds of thousands of users worldwide in the travel space.
-        </p>
-        
-        <p class="text-lg leading-relaxed">
-          I thrive on tackling challenging problems and am always eager to learn more about the technologies that fascinate me.
-        </p>
-        
-        <p class="text-lg leading-relaxed">
-          Outside of tech, my hobbies include motorsports, tennis, and hitting the gym.
-        </p>
+        <div class="font-mono text-sm leading-relaxed text-foreground max-w-2xl space-y-4">
+          <p>
+            Hi, I'm <span class="font-semibold">Carlos</span>, a Software Engineer passionate about building products.
+          </p>
+          <p>
+            Currently at
+            <a 
+              href="https://www.tekmetric.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-primary hover:underline font-medium"
+            >
+              Tekmetric
+            </a>{" "}
+            on the <span class="font-semibold">Shopgenie</span> product, building the best all-in-one software for auto repair shops.
+          </p>
+          <p>
+            Throughout my career, I've worked on small, high-impact teams where
+            I've contributed to projects ranging from geolocation solutions in the security sector to high-availability APIs
+            that serve hundreds of thousands of users worldwide in the travel space.
+          </p>
+          <p>
+            I thrive on tackling challenging problems and am always eager to learn more about the technologies that fascinate me.
+          </p>
+          <p>
+            Outside of tech, my hobbies include motorsports, tennis, and hitting the gym.
+          </p>
+        </div>
       </div>
-      
+
+      {SHOW_HOME_CURRENT_BACKGROUND_BOXES && (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-2 border-border">
+          <div class="p-6 border-b-2 md:border-b-0 md:border-r-2 border-border">
+            <p class="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">Current</p>
+            <h2 class="text-xl font-bold text-foreground mb-2">Tekmetric / Shopgenie</h2>
+            <p class="text-sm font-mono text-muted-foreground">
+              All-in-one software for auto repair shops
+            </p>
+          </div>
+          <div class="p-6">
+            <p class="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">Background</p>
+            <h2 class="text-xl font-bold text-foreground mb-2">Geolocation · Travel APIs</h2>
+            <p class="text-sm font-mono text-muted-foreground">
+              High-availability systems, hundreds of thousands of users
+            </p>
+          </div>
+        </div>
+      )}
+
+      <!-- Profile image -->
       <div class="mt-12 flex justify-center">
         <img 
           src={profileImage.src} 
           alt="Profile" 
-          class="w-64 h-64 rounded-lg object-cover shadow-lg"
+          class="w-48 h-48 object-cover border-2 border-border"
         />
-      </div>
-      
-      <div class="mt-12">
-        <SocialLinks client:load />
       </div>
     </main>
   </div>
 </BaseLayout>
-
