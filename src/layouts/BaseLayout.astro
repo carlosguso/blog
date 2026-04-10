@@ -6,15 +6,30 @@ interface Props {
   description?: string;
 }
 
-const { 
+const {
   title = "Carlos Gutierrez - Software Engineer",
-  description = "Portfolio and blog of Carlos Gutierrez, a Software Engineer passionate about building products from the ground up."
+  description =
+    "Portfolio and blog of Carlos Gutierrez, a Software Engineer passionate about building products from the ground up.",
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WT8GWZQJ");
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
@@ -42,6 +57,16 @@ const {
     </script>
   </head>
   <body class="grain-overlay">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WT8GWZQJ"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="flex min-h-screen">
       <!-- Sidebar: vertical on desktop, horizontal bottom bar on mobile -->
       <aside class="fixed left-0 top-0 bottom-0 w-14 hidden md:flex flex-col items-center py-6 z-40 border-r-2 border-border bg-primary">
